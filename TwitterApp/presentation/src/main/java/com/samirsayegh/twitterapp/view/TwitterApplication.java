@@ -21,6 +21,7 @@ public class TwitterApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Twitter.initialize(this);
+        initializeInjector();
     }
 
     private void initializeInjector() {
