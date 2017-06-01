@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+
+        applicationId globalConfiguration["androidApplicationId"]
+        versionCode globalConfiguration["androidVersionCode"]
+        versionName globalConfiguration["androidVersionName"]
+        //testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+        //testApplicationId globalConfiguration["testApplicationId"]
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'            //Some libraries have issues with this.
+        disable 'OldTargetApi'              //Lint gives this warning but SDK 20 would be Android L Beta.
+        disable 'IconDensities'             //For testing purpose. This is safe to remove.
+        disable 'IconMissingDensityFolder'  //For testing purpose. This is safe to remove.
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../buildsystem/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+
+    compile project(':data')
+    compile project(':domain')
+    /*androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })*/
+
+    compile presentationDependencies.appCompat
+    compile presentationDependencies.design
+
+
+    // RecyclerView
+    compile presentationDependencies.recyclerView
+
+    // Twitter Kit
+    compile presentationDependencies.twitterKit
+
+    // android dagger 2
+    compile presentationDependencies.dagger
+    annotationProcessor presentationDependencies.daggerCompiler
+
+    // android rx
+    compile presentationDependencies.rxAndroid
+    compile presentationDependencies.rxJava
+
+    // picasso
+    compile presentationDependencies.picasso
+
+    // butter knife
+    compile presentationDependencies.butterKnife
+    annotationProcessor presentationDependencies.butterKnifeCompiler
+
+
+
+    //testCompile 'junit:junit:4.12'
+}

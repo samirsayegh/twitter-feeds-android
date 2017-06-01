@@ -1,0 +1,46 @@
+apply from: 'buildsystem/ci.gradle'
+apply from: 'buildsystem/dependencies.gradle'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath "io.realm:realm-gradle-plugin:3.3.1"
+    }
+}
+
+allprojects {
+    ext {
+        androidApplicationId = 'com.samirsayegh.twitterapp'
+        androidVersionCode = 1
+        androidVersionName = "1.0"
+        //testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        //testApplicationId = 'com.samirsayegh.rxtestmarvelchars.test'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+/*
+
+task runDomainUnitTests(dependsOn: [':domain:test']) {
+  description 'Run unit tests for the domain layer.'
+}
+
+task runDataUnitTests(dependsOn: [':data:cleanTestDebugUnitTest', ':data:testDebugUnitTest']) {
+  description 'Run unit tests for the data layer.'
+}
+
+task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests']) {
+  description 'Run unit tests for both domain and data layers.'
+}
+
+task runAcceptanceTests(dependsOn: [':presentation:connectedAndroidTest']) {
+  description 'Run application acceptance tests.'
+}
+ */

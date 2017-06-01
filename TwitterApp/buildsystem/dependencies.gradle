@@ -1,0 +1,95 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidBuildToolsVersion = "25.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 25
+    androidCompileSdkVersion = 25
+
+    //Libraries
+    daggerVersion = '2.11-rc2'
+    butterKnifeVersion = '8.6.0'
+    androidAppCompat = '25.3.1'
+    rxJavaVersion = '2.1.0'
+    rxAndroidVersion = '2.0.1'
+    picassoVersion = '2.5.2'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    retrofitVersion = '2.2.0'
+    twitter4jVersion = '4.0.3'
+    twitterKitVersion = '3.0.0'
+
+    //Testing
+    //robolectricVersion = '3.1.1'
+    jUnitVersion = '4.12'
+    //assertJVersion = '1.7.1'
+    //mockitoVersion = '1.9.5'
+    //dexmakerVersion = '1.0'
+    espressoVersion = '2.2.2'
+    testingSupportLibVersion = '0.1'
+
+    presentationDependencies = [
+            daggerCompiler     : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger             : "com.google.dagger:dagger:${daggerVersion}",
+            butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            recyclerView       : "com.android.support:recyclerview-v7:${androidAppCompat}",
+            appCompat          : "com.android.support:appcompat-v7:${androidAppCompat}",
+            rxJava             : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            picasso            : "com.squareup.picasso:picasso:${picassoVersion}",
+            design             : "com.android.support:design:${androidAppCompat}",
+            twitterKit        : "com.twitter.sdk.android:twitter:${twitterKitVersion}"
+
+            //javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}"
+    ]
+/*
+    presentationTestDependencies = [
+            mockito             : "org.mockito:mockito-core:${mockitoVersion}",
+            dexmaker            : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+            dexmakerMockito     : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+            espresso            : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            testingSupportLib   : "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+    ]
+*/
+    domainDependencies = [
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxJava         : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    ]
+/*
+    domainTestDependencies = [
+            junit  : "junit:junit:${jUnitVersion}",
+            mockito: "org.mockito:mockito-core:${mockitoVersion}",
+            assertj: "org.assertj:assertj-core:${assertJVersion}"
+    ]
+*/
+    dataDependencies = [
+            rxJava            : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid         : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            retrofit          : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            converterGson     : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            adapterRxjava     : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject       : "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAppCompat}",
+            twitter4j         : "org.twitter4j:twitter4j-core:${twitter4jVersion}",
+            twitterKit        : "com.twitter.sdk.android:twitter:${twitterKitVersion}"
+    ]
+/*
+    dataTestDependencies = [
+            junit      : "junit:junit:${jUnitVersion}",
+            assertj    : "org.assertj:assertj-core:${assertJVersion}",
+            mockito    : "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+    ]
+/*
+    developmentDependencies = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    ]*/
+}
