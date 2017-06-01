@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.samirsayegh.twitterapp.MainActivity">
+    tools:context="com.samirsayegh.twitterapp.view.login.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:layout_width="wrap_content" android:id="@+id/twitterLoginButtonLogin"
+        android:layout_height="wrap_content" android:layout_centerInParent="true" />
 
 </RelativeLayout>
