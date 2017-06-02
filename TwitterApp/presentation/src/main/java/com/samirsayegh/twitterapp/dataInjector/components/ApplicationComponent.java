@@ -6,6 +6,7 @@ import com.samirsayegh.twitterapp.dataInjector.modules.ApplicationModule;
 import com.samirsayegh.twitterapp.domain.executor.PostExecutionThread;
 import com.samirsayegh.twitterapp.domain.executor.ThreadExecutor;
 import com.samirsayegh.twitterapp.view.base.BaseActivity;
+import com.twitter.sdk.android.core.services.StatusesService;
 
 import javax.inject.Singleton;
 
@@ -27,4 +28,6 @@ public interface ApplicationComponent {
     ThreadExecutor threadExecutor();
 
     PostExecutionThread postExecutionThread();
+
+    StatusesService statusesService();
 }

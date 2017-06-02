@@ -2,11 +2,13 @@ package com.samirsayegh.twitterapp.dataInjector.modules;
 
 import android.content.Context;
 
-import com.samirsayegh.twitterapp.UIThread;
+import com.samirsayegh.twitterapp.view.UIThread;
 import com.samirsayegh.twitterapp.data.executor.JobExecutor;
 import com.samirsayegh.twitterapp.domain.executor.PostExecutionThread;
 import com.samirsayegh.twitterapp.domain.executor.ThreadExecutor;
 import com.samirsayegh.twitterapp.view.TwitterApplication;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.services.StatusesService;
 
 import javax.inject.Singleton;
 
@@ -43,5 +45,11 @@ public class ApplicationModule {
     @Singleton
     PostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
+    }
+
+    @Provides
+    @Singleton
+    StatusesService provideStatusesService() {
+        return TwitterCore.getInstance().getApiClient().getStatusesService();
     }
 }

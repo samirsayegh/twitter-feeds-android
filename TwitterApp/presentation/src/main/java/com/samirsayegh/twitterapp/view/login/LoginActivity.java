@@ -29,11 +29,42 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        validateUserLoggedIn();
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
-                // Do something with result, which provides a TwitterSession for making API calls
                 Log.d(TAG, "Success");
+                navigateTo(FEEDS_ACTIVITY);
+                /*StatusesService statusesService = getApplicationComponent().statusesService();
+                statusesService.homeTimeline(100, null, null, null, null, null, null).enqueue(new retrofit2.Callback<List<Tweet>>() {
+                    @Override
+                    public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
+                        List<Tweet> tweetList = response.body();
+                        for (Tweet t : tweetList) {
+                            System.out.println(t.text);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Tweet>> call, Throwable t) {
+
+                    }
+                });*/
+                /*UserTimeline userTimeline = new UserTimeline.Builder().userId(userId).build();
+                userTimeline.previous(999999999999999999L, new Callback<TimelineResult<Tweet>>() {
+                    @Override
+                    public void success(Result<TimelineResult<Tweet>> result) {
+                        List<Tweet> tweetList = result.data.items;
+                        for (Tweet t : tweetList) {
+                            System.out.println(t.text);
+                        }
+                    }
+
+                    @Override
+                    public void failure(TwitterException exception) {
+
+                    }
+                });*/
             }
 
             @Override
@@ -42,6 +73,12 @@ public class LoginActivity extends BaseActivity {
                 Log.d(TAG, "failure");
             }
         });
+    }
+
+    private void validateUserLoggedIn() {
+        if (getSessionManager().getActiveSession() != null) {
+            navigateTo(FEEDS_ACTIVITY);
+        }
     }
 
     @Override

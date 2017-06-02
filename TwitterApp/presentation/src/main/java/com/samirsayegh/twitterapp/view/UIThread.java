@@ -1,4 +1,4 @@
-package com.samirsayegh.twitterapp;
+package com.samirsayegh.twitterapp.view;
 
 import com.samirsayegh.twitterapp.domain.executor.PostExecutionThread;
 
