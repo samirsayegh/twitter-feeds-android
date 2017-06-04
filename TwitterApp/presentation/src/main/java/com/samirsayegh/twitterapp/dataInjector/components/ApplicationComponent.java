@@ -5,6 +5,7 @@ import android.content.Context;
 import com.samirsayegh.twitterapp.dataInjector.modules.ApplicationModule;
 import com.samirsayegh.twitterapp.domain.executor.PostExecutionThread;
 import com.samirsayegh.twitterapp.domain.executor.ThreadExecutor;
+import com.samirsayegh.twitterapp.domain.repository.TwitterAppRepository;
 import com.samirsayegh.twitterapp.view.base.BaseActivity;
 import com.twitter.sdk.android.core.services.StatusesService;
 
@@ -30,4 +31,6 @@ public interface ApplicationComponent {
     PostExecutionThread postExecutionThread();
 
     StatusesService statusesService();
+
+    TwitterAppRepository twitterAppRepository();
 }

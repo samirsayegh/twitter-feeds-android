@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.samirsayegh.twitterapp.dataInjector.components.ApplicationComponent;
 import com.samirsayegh.twitterapp.dataInjector.modules.ActivityModule;
+import com.samirsayegh.twitterapp.presenter.base.BasePresenter;
 import com.samirsayegh.twitterapp.view.TwitterApplication;
 import com.samirsayegh.twitterapp.view.feeds.FeedsActivity;
 import com.samirsayegh.twitterapp.view.login.LoginActivity;
@@ -30,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     protected int layoutId;
     protected ProgressDialog dialog;
+    private BasePresenter basePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,33 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         finish();
     }
 
+    protected void setPresenter(BasePresenter basePresenter) {
+        this.basePresenter = basePresenter;
+    }
+
     protected SessionManager<TwitterSession> getSessionManager() {
         return TwitterCore.getInstance().getSessionManager();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (basePresenter != null)
+            basePresenter.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (basePresenter != null)
+            basePresenter.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (basePresenter != null)
+            basePresenter.destroy();
     }
 
     @Override

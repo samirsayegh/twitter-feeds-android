@@ -62,6 +62,9 @@ dependencies {
     compile dataDependencies.rxAndroid
     compile dataDependencies.rxJava
 
+    // Twitter Kit
+    compile dataDependencies.twitterKit
+
     // Retrofit 2 Type-safe HTTP client for Android and Java
     compile dataDependencies.retrofit
     compile dataDependencies.converterGson
