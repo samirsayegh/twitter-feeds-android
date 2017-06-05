@@ -4,7 +4,6 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
     tools:context=".view.feeds.FeedsActivity"
     tools:openDrawer="start">
 
@@ -18,16 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayoutDetails"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HOLAAAA " />
+            android:layout_height="wrap_content" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerDetails"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" />
     </LinearLayout>
 
     <com.samirsayegh.twitterapp.view.feeds.components.ProfileDrawer
         android:id="@+id/profileDrawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"
+        android:background="@color/colorPrimaryTransparent" />
 </android.support.v4.widget.DrawerLayout>

@@ -9,7 +9,9 @@
     <ImageView
         android:id="@+id/imageViewProfileDrawer"
         android:layout_width="@dimen/profile_picture"
-        android:layout_height="@dimen/profile_picture" />
+        android:layout_height="@dimen/profile_picture"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:id="@+id/textViewProfileName"

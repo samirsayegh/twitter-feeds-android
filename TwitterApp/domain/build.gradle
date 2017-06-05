@@ -1,4 +1,33 @@
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+
+    defaultPublishConfig "debug"
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        versionCode globalConfiguration["androidVersionCode"]
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
 
 configurations {
     provided
@@ -18,6 +47,9 @@ dependencies {
 
     compile domainDependencies.javaxInject
     compile domainDependencies.rxJava
+
+    // Twitter Kit
+    compile domainDependencies.twitterCore
 }
 
 sourceCompatibility = "1.7"

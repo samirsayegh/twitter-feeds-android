@@ -1,6 +1,9 @@
 package com.samirsayegh.twitterapp.data.twitterApi;
 
 import com.samirsayegh.twitterapp.domain.entities.TwitterUser;
+import com.twitter.sdk.android.core.models.Tweet;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -13,4 +16,7 @@ public interface TwitterApi {
 
     Observable<TwitterUser> getCurrentUser();
 
+    Observable<List<Tweet>> getNewsFeeds();
+
+    Observable<List<Tweet>> getFavouriteFeeds();
 }

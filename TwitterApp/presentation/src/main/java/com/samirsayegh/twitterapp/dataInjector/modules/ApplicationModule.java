@@ -2,13 +2,14 @@ package com.samirsayegh.twitterapp.dataInjector.modules;
 
 import android.content.Context;
 
-import com.samirsayegh.twitterapp.data.repository.TwitterAppDataRepository;
-import com.samirsayegh.twitterapp.domain.repository.TwitterAppRepository;
-import com.samirsayegh.twitterapp.view.UIThread;
 import com.samirsayegh.twitterapp.data.executor.JobExecutor;
+import com.samirsayegh.twitterapp.data.repository.TwitterAppDataRepository;
 import com.samirsayegh.twitterapp.domain.executor.PostExecutionThread;
 import com.samirsayegh.twitterapp.domain.executor.ThreadExecutor;
+import com.samirsayegh.twitterapp.domain.repository.TwitterAppRepository;
 import com.samirsayegh.twitterapp.view.TwitterApplication;
+import com.samirsayegh.twitterapp.view.UIThread;
+import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.services.StatusesService;
 
@@ -53,6 +54,12 @@ public class ApplicationModule {
     @Singleton
     StatusesService provideStatusesService() {
         return TwitterCore.getInstance().getApiClient().getStatusesService();
+    }
+
+    @Provides
+    @Singleton
+    TwitterApiClient provideTwitterApiClient() {
+        return TwitterCore.getInstance().getApiClient();
     }
 
     @Provides

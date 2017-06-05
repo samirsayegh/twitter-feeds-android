@@ -10,4 +10,8 @@ import com.samirsayegh.twitterapp.view.feeds.FeedsView;
 
 public interface FeedsPresenter extends BasePresenter {
     void setView(FeedsView feedsView);
+
+    void retrieveFavourites();
+
+    void retrieveNews();
 }

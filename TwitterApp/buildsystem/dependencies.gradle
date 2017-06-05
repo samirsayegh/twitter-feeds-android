@@ -44,7 +44,7 @@ ext {
             rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             picasso            : "com.squareup.picasso:picasso:${picassoVersion}",
             design             : "com.android.support:design:${androidAppCompat}",
-            twitterKit        : "com.twitter.sdk.android:twitter:${twitterKitVersion}"
+            twitterKit         : "com.twitter.sdk.android:twitter:${twitterKitVersion}"
 
             //javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}"
     ]
@@ -60,7 +60,8 @@ ext {
     domainDependencies = [
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
-            rxJava         : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+            rxJava         : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            twitterCore    : "com.twitter.sdk.android:twitter-core:${twitterKitVersion}"
     ]
 /*
     domainTestDependencies = [

@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         this.basePresenter = basePresenter;
     }
 
-    protected SessionManager<TwitterSession> getSessionManager() {
+    public SessionManager<TwitterSession> getSessionManager() {
         return TwitterCore.getInstance().getSessionManager();
     }
 
@@ -104,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         }
     }
 
-    protected ApplicationComponent getApplicationComponent() {
+    public ApplicationComponent getApplicationComponent() {
         return ((TwitterApplication) getApplication()).getApplicationComponent();
     }
 
