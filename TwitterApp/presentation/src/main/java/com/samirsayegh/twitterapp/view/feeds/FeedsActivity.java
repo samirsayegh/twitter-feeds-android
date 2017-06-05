@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
 import com.samirsayegh.twitterapp.R;
+import com.samirsayegh.twitterapp.data.mapper.UserMapper;
 import com.samirsayegh.twitterapp.dataInjector.components.DaggerFeedsComponent;
 import com.samirsayegh.twitterapp.domain.entities.TwitterUser;
 import com.samirsayegh.twitterapp.presenter.feeds.FeedsPresenter;
@@ -18,7 +19,6 @@ import com.samirsayegh.twitterapp.view.feeds.components.ProfileDrawer;
 import com.samirsayegh.twitterapp.view.feeds.components.ProfileDrawerListener;
 import com.samirsayegh.twitterapp.view.feeds.fragments.news.NewsFragmentListener;
 import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.core.models.User;
 
 import java.util.List;
 
@@ -141,10 +141,7 @@ public class FeedsActivity extends BaseActivity implements FeedsView, ProfileDra
 
     @Override
     public void onTweetClicked(Tweet tweet) {
-        User user = tweet.user;
-        System.out.println(user.name);
-        System.out.println(user.description);
-        System.out.println(user.profileBackgroundImageUrl);
+        navigateWithBundle(UserMapper.toTwitterUser(tweet.user), USER_ACTIVITY);
     }
 
     @Override

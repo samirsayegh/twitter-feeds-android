@@ -13,9 +13,12 @@ import com.samirsayegh.twitterapp.presenter.base.BasePresenter;
 import com.samirsayegh.twitterapp.view.TwitterApplication;
 import com.samirsayegh.twitterapp.view.feeds.FeedsActivity;
 import com.samirsayegh.twitterapp.view.login.LoginActivity;
+import com.samirsayegh.twitterapp.view.user.UserActivity;
 import com.twitter.sdk.android.core.SessionManager;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterSession;
+
+import java.io.Serializable;
 
 import butterknife.ButterKnife;
 
@@ -28,6 +31,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     protected static final int LOGIN_ACTIVITY = 0;
     protected static final int FEEDS_ACTIVITY = 1;
+    protected static final int USER_ACTIVITY = 2;
+
+    protected static final String USER_EXTRA = "USER_EXTRA";
 
     protected int layoutId;
     protected ProgressDialog dialog;
@@ -45,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected abstract void init();
 
     protected void navigateTo(int activity) {
-        Intent intent = null;
+        Intent intent;
         switch (activity) {
             case LOGIN_ACTIVITY:
                 getSessionManager().clearActiveSession();
@@ -55,10 +61,30 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                 intent = new Intent(this, FeedsActivity.class);
                 break;
             default:
-                break;
+                return;
         }
         startActivity(intent);
         finish();
+    }
+
+    protected void navigateWithBundle(Serializable serializable, int activity) {
+        Intent intent;
+        switch (activity) {
+            case LOGIN_ACTIVITY:
+                getSessionManager().clearActiveSession();
+                intent = new Intent(this, LoginActivity.class);
+                break;
+            case FEEDS_ACTIVITY:
+                intent = new Intent(this, FeedsActivity.class);
+                break;
+            case USER_ACTIVITY:
+                intent = new Intent(this, UserActivity.class);
+                break;
+            default:
+                return;
+        }
+        intent.putExtra(USER_EXTRA, serializable);
+        startActivity(intent);
     }
 
     protected void setPresenter(BasePresenter basePresenter) {

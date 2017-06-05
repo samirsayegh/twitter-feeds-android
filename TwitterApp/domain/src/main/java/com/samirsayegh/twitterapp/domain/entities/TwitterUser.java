@@ -1,15 +1,18 @@
 package com.samirsayegh.twitterapp.domain.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by Samir DK on 6/4/2017.
  * Samir Dev
  */
 
-public class TwitterUser {
+public class TwitterUser implements Serializable {
 
     private long id;
     private String name;
     private String profileImage;
+    private String description;
 
     public long getId() {
         return id;
@@ -33,5 +36,9 @@ public class TwitterUser {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
